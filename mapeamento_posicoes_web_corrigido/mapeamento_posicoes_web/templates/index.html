@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mapa 2D | Inventário de TI</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+<header><div><small>INVENTÁRIO DE TI</small><h1>Mapa 2D de posições</h1></div><span id="salvamento">Pronto</span></header>
+<div class="layout">
+<aside><button id="novo" class="primario">+ Nova posição</button><button id="abrirImportacao" class="secundario">Importar Excel</button><label>Andar<select id="andar"></select></label>
+<label>Pesquisar<input id="busca" placeholder="Posição, usuário, RACF..."></label>
+<div class="legenda"><b>Legenda</b><span><i class="livre"></i>Livre</span><span><i class="ocupada"></i>Ocupada</span><span><i class="manutencao"></i>Manutenção</span></div>
+<p class="ajuda">Arraste os blocos para organizar o ambiente. Clique para editar os dados.</p></aside>
+<main><div class="barra"><strong id="tituloAndar">Planta</strong><span id="contador"></span></div><div id="mapa"></div></main>
+</div>
+<div id="modal" class="modal oculto"><form id="form"><div class="modal-card"><div class="modal-header"><h2>Detalhes da posição</h2><button type="button" id="fechar">×</button></div>
+<input type="hidden" id="id"><div class="grade">
+<label>Andar<input id="f-andar" required></label><label>Posição<input id="codigo" required></label>
+<label>Status<select id="status"><option>Livre</option><option>Ocupada</option><option>Manutenção</option></select></label>
+<label>Usuário<input id="usuario"></label><label>RACF<input id="racf"></label><label>Área<input id="area"></label>
+<label>Hostname<input id="hostname"></label><label>Inventário<input id="inventario"></label><label>Modelo<input id="modelo"></label><label>IP<input id="ip" placeholder="192.168.0.10"></label>
+<label class="duplo">Observação<textarea id="observacao"></textarea></label></div>
+<div class="acoes"><button type="button" class="perigo" id="excluir">Excluir</button><span></span><button type="button" id="cancelar">Cancelar</button><button class="primario">Salvar</button></div></div></form></div>
+<div id="modalImportacao" class="modal oculto"><form id="formImportacao"><div class="modal-card import-card"><div class="modal-header"><h2>Importar dados do Excel</h2><button type="button" id="fecharImportacao">×</button></div><p class="ajuda">Aceita .xlsx e .xlsm. O cabeçalho deve conter, no mínimo, <b>Andar</b> e <b>Posição</b>. Registros existentes com o mesmo andar e posição serão atualizados sem perder as coordenadas do mapa.</p><label>Arquivo Excel<input type="file" id="arquivoExcel" accept=".xlsx,.xlsm" required></label><label>Planilha (opcional)<input id="nomePlanilha" placeholder="Detecção automática"></label><div id="progressoImportacao"></div><div class="acoes"><span></span><button type="button" id="cancelarImportacao">Cancelar</button><button class="primario" id="botaoImportar">Importar para SQLite</button></div></div></form></div><div id="toast"></div><script src="/static/app.js"></script></body></html>
